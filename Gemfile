@@ -46,3 +46,4 @@ end
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'haml'

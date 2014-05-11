@@ -1,5 +1,12 @@
 Tweet2do::Application.routes.draw do
+  root "tasks#index"
+
   get "tasks/index"
+  post "tasks/add"
+  delete "tasks/delete"
+
+  get "/signout" => "sessions#destroy"
+  get "/auth/twitter/callback" => "sessions#create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
