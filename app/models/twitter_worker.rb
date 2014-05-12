@@ -11,7 +11,20 @@ class TwitterWorker < ActiveRecord::Base
   end
 
   def self.check_new_tasks
-    p 'check_new_tasks'
-    p @@client.direct_messages_received # array of last 20 messages
+    p 'check_new_tasks...'
+
+    processed = []
+    @@client.direct_messages_received.each do |message| # array of last 20 messages
+      processed << message.id
+      process @@client.direct_message(message.id)
+    end
+
+    @@client.destroy_direct_message processed if not processed.empty?
+  end
+
+  private 
+
+  def self.process message
+    task = Task.add({'text' => message.text}, message.sender.username)
   end
 end
