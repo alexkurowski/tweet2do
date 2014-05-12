@@ -9,8 +9,9 @@
   = form_for @new_task, :url => { :action => "add" } do |form|
     = form.text_field :text
     = form.submit "add"
+    = datetime_select :task, :date, :default => 1.days.from_now, :minute_step => 15
   %ul
     - @task_list.each do |task|
-      %li= task.text
+      %li= [task.text, " @ ", task.date].join
 
 

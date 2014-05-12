@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511223737) do
+ActiveRecord::Schema.define(version: 20140512034045) do
 
   create_table "tasks", force: true do |t|
     t.string   "text"
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 20140511223737) do
     t.boolean  "is_reminder"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.string   "user"
+    t.datetime "date"
   end
 
   create_table "users", force: true do |t|
