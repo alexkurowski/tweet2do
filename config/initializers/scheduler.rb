@@ -2,8 +2,8 @@ require 'rufus-scheduler'
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.every '1m' do
-	TwitterWorker.check_for_new_tasks
-end
+TwitterWorker.start
 
-scheduler.join
+scheduler.every '1m' do
+  TwitterWorker.check_new_tasks
+end
