@@ -10,31 +10,41 @@ class TwitterWorker < ActiveRecord::Base
     @@client ||= Twitter::REST::Client.new config
   end
 
-  def self.check_new_tasks
-    puts "check new followers..."
+  def self.check_new_followers
+    start if @@client.nil?
+    
+    followers = @@client.follower_ids("zneue").map{|_|_}
 
-    followers = []
-    @@client.follower_ids("zneue").each do |id|
-      followers << id
-    end
-
-    friends = []
-    @@client.friend_ids("zneue").each do |id|
-      friends << id
-    end
+    friends = @@client.friend_ids("zneue").map{|_|_}
 
     @@client.follow followers - friends
+  end
 
-
-    puts "check new tasks..."
-
+  def self.check_new_tasks
+    start if @@client.nil?
+    
     processed = []
-    @@client.direct_messages_received.each do |message| # array of last 20 messages
+    @@client.direct_messages_received.each do |message|
       processed << message.id
       process @@client.direct_message(message.id)
     end
 
     @@client.destroy_direct_message processed if not processed.empty?
+  end
+
+  def self.send_reminders
+    start if @@client.nil?
+
+    tasks = Task.where(is_reminder: true).to_a
+    now = Time.now.utc
+
+    tasks.each do |task|
+      if now >= task.date
+        @@client.create_direct_message task.user, task.text
+        task.is_reminder = false
+        task.save!
+      end
+    end
   end
 
   private 

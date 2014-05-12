@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
     @signed = true if session[:user_id]
     
-    @task_list = Task.find_all_by_user current_user.twitter_alias if @signed
+    @task_list = Task.where(user: current_user.twitter_alias) if @signed
     @task_list ||= []
 
     @new_task = Task.new
@@ -16,7 +16,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find_by_id params[:id]
+    @task = Task.where(id: params[:id]).take
     @task.destroy if @task.user == current_user.twitter_alias
     redirect_to root_url
   end
