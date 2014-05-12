@@ -47,3 +47,4 @@ end
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'haml'
+gem 'rufus-scheduler'
