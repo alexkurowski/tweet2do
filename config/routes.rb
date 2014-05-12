@@ -3,7 +3,7 @@ Tweet2do::Application.routes.draw do
 
   get "tasks/index"
   post "tasks/add"
-  delete "tasks/delete"
+  post "tasks/destroy/:id" => "tasks#destroy"
 
   get "/signout" => "sessions#destroy"
   get "/auth/twitter/callback" => "sessions#create"

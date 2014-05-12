@@ -15,6 +15,12 @@ class TasksController < ApplicationController
     redirect_to root_url
   end
 
+  def destroy
+    @task = Task.find_by_id params[:id]
+    @task.destroy if @task.user == current_user.twitter_alias
+    redirect_to root_url
+  end
+
   private
   
   def current_user

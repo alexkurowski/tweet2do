@@ -12,6 +12,6 @@
     = datetime_select :task, :date, :default => 1.days.from_now, :minute_step => 15
   %ul
     - @task_list.each do |task|
-      %li= [task.text, " @ ", task.date].join
-
-
+      %li
+        = "#{task.text} @ #{task.date}"
+        = link_to "x", "tasks/destroy/#{task.id}", :method => 'destroy'
