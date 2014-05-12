@@ -4,6 +4,6 @@ scheduler = Rufus::Scheduler.new
 
 TwitterWorker.start
 
-scheduler.every '1m' do
+scheduler.every '5m' do
   TwitterWorker.check_new_tasks
 end

@@ -11,7 +11,22 @@ class TwitterWorker < ActiveRecord::Base
   end
 
   def self.check_new_tasks
-    p 'check_new_tasks...'
+    puts "check new followers..."
+
+    followers = []
+    @@client.follower_ids("zneue").each do |id|
+      followers << id
+    end
+
+    friends = []
+    @@client.friend_ids("zneue").each do |id|
+      friends << id
+    end
+
+    @@client.follow followers - friends
+
+
+    puts "check new tasks..."
 
     processed = []
     @@client.direct_messages_received.each do |message| # array of last 20 messages
