@@ -112,7 +112,7 @@ html, body {
   width: 40px;
   text-align: center;
   position: relative;
-  top: 2px;
+  top: 3px;
 }
 
 .content {
@@ -120,6 +120,8 @@ html, body {
   color: #333;
   padding-left: 2px;
   word-wrap: break-word;
+  position: relative;
+  top: 2px;
 }
 
 .control {
@@ -128,6 +130,19 @@ html, body {
   text-align: right;
   width: 140px;
   padding-right: 16px;
+}
+
+.delete_image, .edit_image {
+  width: 14px;
+  position: relative;
+  top: 4px;
+  opacity: 0.2;
+  color: #aaa;
+  margin-left: 8px;
+}
+
+.delete_image:hover, .edit_image:hover {
+  opacity: 1
 }
 
 
