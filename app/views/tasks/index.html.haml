@@ -1,16 +1,19 @@
-%p
+.wrapper
   - if current_user
     = ["logged in as ", current_user.name, " |"].join
     = link_to "sign out", "/signout"
   - else
     = link_to "Sign in with Twitter", "/auth/twitter"
-%h1 Tasks#index
-- if @signed
-  = form_for @new_task, :url => { :action => "add" } do |form|
-    = form.text_field :text
-    = form.submit "add"
-  %ul
-    - @task_list.each do |task|
-      %li
-        = link_to "x", "tasks/destroy/#{task.id}", :method => 'destroy'
-        = " #{task.text} "
+  - if @signed
+    = form_for @new_task, :url => { :action => "add" } do |form|
+      = form.text_field :text
+      = form.submit "add"
+      .separator
+      - @task_list.each do |task|
+        .task
+          .done
+            %input{:type => "checkbox"}
+          .content
+            = "#{task.text}"
+          .control
+            = link_to "x", "tasks/destroy/#{task.id}", :method => 'destroy'

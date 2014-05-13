@@ -1,3 +1,67 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 50%;
+  min-width: 600px;
+  margin: 0 auto;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #555;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.task {
+  display: table;
+  table-layout: fixed;
+  /*background-color: #f0fafe;*/
+  width: 100%;
+  min-height: 48px;
+  margin-top: 2px;
+}
+
+.done, .content, .control {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.done {
+  /* background-color: #ff8844; */
+  width: 40px;
+  text-align: center;
+  position: relative;
+  top: 3px;
+}
+
+.content {
+  /* background-color: #88ff44; */
+  color: #333;
+  padding-left: 2px;
+  word-wrap: break-word;
+}
+
+.control {
+  /* background-color: #4488ff; */
+  color: #999;
+  text-align: right;
+  width: 140px;
+  padding-right: 16px;
+}
+
+
+
+
+
+
+
+

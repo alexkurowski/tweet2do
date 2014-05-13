@@ -3,8 +3,10 @@ class TasksController < ApplicationController
 
   def index
     @signed = true if session[:user_id]
+
+    TwitterWorker.check_new_tasks
     
-    @task_list = Task.where(user: current_user.twitter_alias) if @signed
+    @task_list = Task.where(user: current_user.twitter_alias).sort_by(&:id).reverse if @signed
     @task_list ||= []
 
     @new_task = Task.new
