@@ -13,6 +13,17 @@ html, body {
   margin: 0 auto;
 }
 
+.login {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+}
+
+.login_image {
+  position: relative;
+  left: -71px;
+}
+
 .logged {
   float: right;
   position: relative;
@@ -77,7 +88,7 @@ html, body {
 .task {
   display: table;
   table-layout: fixed;
-  /*background-color: #f0fafe;*/
+  font-family: Arial, sans-serif;
   width: 100%;
   min-height: 48px;
   margin-top: 2px;
@@ -101,7 +112,7 @@ html, body {
   width: 40px;
   text-align: center;
   position: relative;
-  top: 3px;
+  top: 2px;
 }
 
 .content {

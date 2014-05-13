@@ -60,7 +60,7 @@ class TwitterWorker < ActiveRecord::Base
     now = Time.now.utc
 
     tasks.each do |task|
-      if now >= task.date and task.is_reminder and not task.is_donw
+      if now >= task.date and task.is_reminder and not task.is_done
         @client.create_direct_message task.user, task.text
         task.is_reminder = false
         task.save!

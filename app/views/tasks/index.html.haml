@@ -7,7 +7,7 @@
         = link_to " sign out", "/signout"
     - else
       .login
-        = link_to "Sign in with Twitter", "/auth/twitter"
+        = link_to image_tag("sign-in-with-twitter-link.png", :class => "login_image"), "/auth/twitter"
   - if @signed
     = form_for @new_task, :url => { :action => "add" } do |form|
       = form.text_area :text, :maxlength => '140'
