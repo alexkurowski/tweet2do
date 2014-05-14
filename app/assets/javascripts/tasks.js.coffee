@@ -20,7 +20,7 @@ jQuery ->
     })
     done = $(this).is(':checked')
     if done
-      $(this).parent().parent().css({ opacity: 0.7 })
+      $(this).parent().parent().css({ opacity: 0.6 })
     else
       $(this).parent().parent().css({ opacity: 1 })
   )
@@ -59,4 +59,4 @@ $(document).ready ->
   $(".task").each ->
     done = $(this).find(".checkbox").is(':checked')
     if done
-      $(this).css({ opacity: 0.7 });
+      $(this).css({ opacity: 0.6 });

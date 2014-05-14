@@ -21,6 +21,7 @@
       .task
         .done
           = check_box_tag "#{task.id}", 'done', task.is_done, class: 'checkbox'
+          %label{:for => "#{task.id}"}
         .content{:id => "#{task.id}"}
           .text= "#{task.text}"
           - if task.is_reminder
