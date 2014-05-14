@@ -11,7 +11,12 @@
   - if @signed
     = form_for @new_task, :url => { :action => "add" } do |form|
       = form.text_area :text, :maxlength => '140'
+      .calendar
       = form.submit "add", :class => "submit"
+      .info= image_tag("fi-info.svg", :class => "info_image", :title => "Example: \"buy some milk @3d-16.30\"\nreminder will be delivered in 3 days at 16:30", :style => "display: none")
+      .explain
+        Ex: "Buy new pencil @3d-16.30"
+        %br you will be reminded in 3 days at 16:30
     - @task_list.each do |task|
       .task
         .done
