@@ -62,8 +62,19 @@ html, body {
   display: inline;
   font-family: Arial, sans-serif;
   font-size: 0.8em;
+  font-weight: bold;
   position: relative;
   top: -1px;
+}
+
+.logout a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.logout a:hover {
+  color: #888;
+  text-decoration: underline;
 }
 
 #task_text {
@@ -95,6 +106,10 @@ html, body {
   top: -6px;
   left: 0px;
   margin-bottom: 6px;
+}
+
+.submit:hover {
+  background-color: #eee;
 }
 
 .explain {
@@ -200,7 +215,7 @@ input#edit {
   visibility: hidden;
 }
 .done input[type=checkbox]:checked + label:after {
-  opacity: 1;    
+  opacity: 0.8;    
 }
 
 .content {
@@ -213,6 +228,12 @@ input#edit {
 
 .text, .date {
   display: inline;
+}
+
+.text {
+  color: #666;
+  font-weight: bold;
+  font-size: 0.8em;
 }
 
 .date {
@@ -242,7 +263,7 @@ input#edit {
 }
 
 .delete_image:hover, .edit_image:hover, .save_image:hover, .cancel_image:hover {
-  opacity: 1
+  opacity: 0.8
 }
 
 
