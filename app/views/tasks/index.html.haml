@@ -29,7 +29,7 @@
             .date= "#{date}"
         .edit{:id => "#{task.id}", :style => "display: none"}
           - if task.is_reminder
-            - remain_days = (task.date - Time.now.utc)/60/60/24
+            - remain_days = (task.date - Time.now.utc)/60/60/24 + 1
             - date = "@#{remain_days >= 1 ? "%d" % remain_days + 'd-' : ''}#{"%02d" % task.date.localtime.hour}.#{"%02d" % task.date.localtime.min}"
           - else
             - date = ''
