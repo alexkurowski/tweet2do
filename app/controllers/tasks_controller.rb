@@ -23,6 +23,26 @@ class TasksController < ApplicationController
     redirect_to root_url
   end
 
+
+  def done
+    @task = Task.where(id: params[:id]).take
+    @task.is_done = params[:done]
+    @task.save!
+
+    respond_to do |format|
+      format.html { render :text => "" }
+    end
+  end
+
+  def edit
+    @task = Task.where(id: params[:id]).take
+    if not @task.nil?
+      @task.text = params[:text]
+      @task.save!
+    end
+    redirect_to root_url
+  end
+
   private
   
   def current_user

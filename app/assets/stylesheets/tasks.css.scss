@@ -101,6 +101,18 @@ html, body {
   background: #eee;
 }
 
+.task:hover {
+  opacity: 1 !important;
+}
+
+input#edit {
+  width: 97%;
+  height: 2em;
+  padding-left: 8px;
+  position: relative;
+  top: 9px;
+}
+
 .done, .content, .control {
   display: table-cell;
   vertical-align: middle;
@@ -113,8 +125,13 @@ html, body {
   top: 3px;
 }
 
+.checkbox {
+  width: 18px;
+  height: 18px;
+}
+
 .content {
-  color: #333;
+  color: #444;
   padding-left: 2px;
   word-wrap: break-word;
   position: relative;
@@ -128,7 +145,7 @@ html, body {
   padding-right: 16px;
 }
 
-.delete_image, .edit_image {
+.delete_image, .edit_image, .save_image, .cancel_image {
   width: 14px;
   position: relative;
   top: 4px;
@@ -137,7 +154,7 @@ html, body {
   margin-left: 8px;
 }
 
-.delete_image:hover, .edit_image:hover {
+.delete_image:hover, .edit_image:hover, .save_image:hover, .cancel_image:hover {
   opacity: 1
 }
 

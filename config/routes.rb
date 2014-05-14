@@ -5,6 +5,10 @@ Tweet2do::Application.routes.draw do
   post "tasks/add"
   post "tasks/destroy/:id" => "tasks#destroy"
 
+  get "tasks/edit/:id/:text" => "tasks#edit"
+  post "tasks/done/:id" => "tasks#done"
+
+
   get "/signout" => "sessions#destroy"
   get "/auth/twitter/callback" => "sessions#create"
   # The priority is based upon order of creation: first created -> highest priority.
