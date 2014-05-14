@@ -24,9 +24,16 @@
         .content{:id => "#{task.id}"}
           .text= "#{task.text}"
           - if task.is_reminder
-            .date= "@#{(task.date - Time.now.utc)/60/60/24 >= 1 ? "%d" % ((task.date - Time.now.utc)/60/60/24) + 'd-' : ''}#{"%02d" % task.date.localtime.hour}.#{"%02d" % task.date.localtime.min}"
+            - remain_days = (task.date - Time.now.utc)/60/60/24
+            - date = "#{remain_days >= 1 ? "in %d" % remain_days + (remain_days.floor == 1 ? ' day ' : ' days ') : ''}at #{"%02d" % task.date.localtime.hour}.#{"%02d" % task.date.localtime.min}"
+            .date= "#{date}"
         .edit{:id => "#{task.id}", :style => "display: none"}
-          = text_field_tag "edit", "#{task.text}", maxlength: 140
+          - if task.is_reminder
+            - remain_days = (task.date - Time.now.utc)/60/60/24
+            - date = "@#{remain_days >= 1 ? "%d" % remain_days + 'd-' : ''}#{"%02d" % task.date.localtime.hour}.#{"%02d" % task.date.localtime.min}"
+          - else
+            - date = ''
+          = text_field_tag "edit", "#{task.text}#{date}", maxlength: 140
         .control
           = image_tag("fi-pencil.svg", :class => "edit_image", :id => "#{task.id}")
           = link_to image_tag("fi-x.svg", :class => "delete_image", :id => "#{task.id}"), "tasks/destroy/#{task.id}", :method => 'destroy'
