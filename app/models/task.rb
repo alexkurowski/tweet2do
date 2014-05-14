@@ -6,9 +6,7 @@ class Task < ActiveRecord::Base
 
     is_reminder = false
     now = Time.now
-
     date = parse_time text.last, now
-
     is_reminder = true if date - now > 120
 
     Task.create(:text => text.first, :user => user, :is_done => false, :is_reminder => is_reminder, :date => date.utc)
@@ -23,9 +21,7 @@ class Task < ActiveRecord::Base
 
     is_reminder = false
     now = Time.now
-
     date = parse_time text.last, now
-
     is_reminder = true if now - date > 120
 
     task.text = text.first
