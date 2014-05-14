@@ -180,6 +180,20 @@ input#edit {
   top: 2px;
 }
 
+.text, .date {
+  display: inline;
+}
+
+.date {
+  float: right;
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.8em;
+  opacity: 0.6;
+  position: relative;
+  top: 2px;
+}
+
 .control {
   color: #999;
   text-align: right;

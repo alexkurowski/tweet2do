@@ -5,7 +5,7 @@ Tweet2do::Application.routes.draw do
   post "tasks/add"
   post "tasks/destroy/:id" => "tasks#destroy"
 
-  get "tasks/edit/:id/:text" => "tasks#edit"
+  get "tasks/edit/:id" => "tasks#edit"
   post "tasks/done/:id" => "tasks#done"
 
 

@@ -39,7 +39,7 @@ jQuery ->
   $(".save_image").click(->
     id = $(this).attr('id')
     text = $("##{id}.edit input").val()
-    window.location = "/tasks/edit/#{id}/#{text}"
+    window.location = "/tasks/edit/#{id}/?text=#{text}"
   )
 
   $(".cancel_image").click(->

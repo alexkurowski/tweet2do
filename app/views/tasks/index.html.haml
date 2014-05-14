@@ -22,7 +22,9 @@
         .done
           = check_box_tag "#{task.id}", 'done', task.is_done, class: 'checkbox'
         .content{:id => "#{task.id}"}
-          = "#{task.text}"
+          .text= "#{task.text}"
+          - if task.is_reminder
+            .date= "@#{(task.date - Time.now.utc)/60/60/24 >= 1 ? "%d" % ((task.date - Time.now.utc)/60/60/24) + 'd-' : ''}#{"%02d" % task.date.localtime.hour}.#{"%02d" % task.date.localtime.min}"
         .edit{:id => "#{task.id}", :style => "display: none"}
           = text_field_tag "edit", "#{task.text}", maxlength: 140
         .control
