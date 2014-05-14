@@ -38,5 +38,5 @@
         .control
           = image_tag("fi-pencil.svg", :class => "edit_image", :id => "#{task.id}")
           = link_to image_tag("fi-x.svg", :class => "delete_image", :id => "#{task.id}"), "tasks/destroy/#{task.id}", :method => 'destroy'
-          = image_tag("fi-check.svg", :class => "save_image", :id => "#{task.id}", :style => "display: none")
           = image_tag("fi-minus.svg", :class => "cancel_image", :id => "#{task.id}", :style => "display: none")
+          = image_tag("fi-check.svg", :class => "save_image", :id => "#{task.id}", :style => "display: none")

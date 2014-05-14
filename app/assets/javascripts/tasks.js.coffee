@@ -21,8 +21,10 @@ jQuery ->
     done = $(this).is(':checked')
     if done
       $(this).parent().parent().css({ opacity: 0.6 })
+      $(this).parent().parent().find(".date").hide()
     else
       $(this).parent().parent().css({ opacity: 1 })
+      $(this).parent().parent().find(".date").show()
   )
 
   $(".edit_image").click(->
@@ -60,3 +62,4 @@ $(document).ready ->
     done = $(this).find(".checkbox").is(':checked')
     if done
       $(this).css({ opacity: 0.6 });
+      $(this).find(".date").hide()
