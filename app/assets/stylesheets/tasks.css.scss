@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 html, body {
-  background: #eee;
+  background: #f4f4f4;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -33,7 +33,7 @@ html, body {
 .logged {
   float: right;
   position: relative;
-  margin-top: 4px;
+  margin-top: 6px;
   padding-bottom: 12px;
 }
 
@@ -71,20 +71,14 @@ html, body {
   resize: none;
   width: 99%;
   height: 64px;
-
+  border-color: #ccc;
   margin-top: 16px;
 }
 
 .submit {
-  -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-  box-shadow: inset 0px 1px 0px 0px #ffffff;
   background-color: transparent;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
   text-indent: 0;
-  border: 1px solid #dcdcdc;
+  border: 1px solid #ccc;
   display: inline-block;
   color: #888;
   font-family: Arial;
@@ -96,8 +90,6 @@ html, body {
   width: 100px;
   text-decoration: none;
   text-align: center;
-  text-shadow: 1px 1px 0px #ffffff;
-
   display: block;
   position: relative;
   top: -6px;

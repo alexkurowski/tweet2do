@@ -18,7 +18,7 @@
         Ex: "Buy new pencil @3d-16.30"
         %br you will be reminded in 3 days at 16:30
     - @task_list.each_with_index do |task, i|
-      .task{:style => "#{i % 2 == 1 ? 'background: #eee' : ''}"}
+      .task{:style => "#{i % 2 == 1 ? 'background: #f4f4f4' : ''}"}
         .done
           = check_box_tag "#{task.id}", 'done', task.is_done, class: 'checkbox'
           %label{:for => "#{task.id}"}
