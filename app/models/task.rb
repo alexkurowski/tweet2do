@@ -30,7 +30,7 @@ class Task < ActiveRecord::Base
     task.save!
   end
 
-  def parse_time string, now
+  def self.parse_time string, now
     date_hash = {}
 
     string.split(/[^dwm0-9]/).each do |d|

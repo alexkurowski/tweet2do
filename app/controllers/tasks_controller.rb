@@ -36,11 +36,6 @@ class TasksController < ApplicationController
 
   def edit
     Task.update params[:id], params[:text]
-    @task = Task.where(id: params[:id]).take
-    if not @task.nil?
-      @task.text = params[:text]
-      @task.save!
-    end
     redirect_to root_url
   end
 

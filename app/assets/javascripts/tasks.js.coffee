@@ -20,9 +20,9 @@ jQuery ->
     })
     done = $(this).is(':checked')
     if done
-      $(this).parent().parent().css({ opacity: 0.7 });
+      $(this).parent().parent().css({ opacity: 0.7 })
     else
-      $(this).parent().parent().css({ opacity: 1 });
+      $(this).parent().parent().css({ opacity: 1 })
   )
 
   $(".edit_image").click(->
