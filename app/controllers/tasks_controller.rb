@@ -35,6 +35,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    Task.update params[:id], params[:text]
     @task = Task.where(id: params[:id]).take
     if not @task.nil?
       @task.text = params[:text]
