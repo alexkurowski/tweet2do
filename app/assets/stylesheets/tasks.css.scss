@@ -3,14 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 html, body {
+  background: #eee;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
 .wrapper {
+  background: white;
   width: 50%;
   min-width: 500px;
+  min-height: 100%;
   margin: 0 auto;
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
 .login {
@@ -31,15 +37,33 @@ html, body {
   padding-bottom: 20px;
 }
 
+.username {
+  display: inline;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 0.8em;
+  opacity: 0.5;
+}
+
 .avatar {
   display: inline-block;
   background-color: #eee;
   background-size: cover;
   width: 40px;
   height: 40px;
+  border-radius: 5px;
   position: relative;
   top: 14px;
   margin-left: 4px;
+  margin-right: 2px;
+}
+
+.logout {
+  display: inline;
+  font-family: Arial, sans-serif;
+  font-size: 0.8em;
+  position: relative;
+  top: -1px;
 }
 
 #task_text {
@@ -85,6 +109,7 @@ html, body {
 .explain {
   font-family: Arial, sans-serif;
   font-size: 0.7em;
+  width: 200px;
   position: relative;
   top: -44px;
   left: 4px;

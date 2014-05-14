@@ -2,9 +2,9 @@
   .top
     - if current_user
       .logged
-        = "#{current_user.name} "
+        .username= "#{current_user.name} "
         .avatar{:style => "background-image:url(#{current_user.image})"}
-        = link_to " sign out", "/signout"
+        .logout= link_to " sign out", "/signout"
     - else
       .login
         = link_to image_tag("sign-in-with-twitter-link.png", :class => "login_image"), "/auth/twitter"

@@ -3,6 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+  $("form").submit(->
+    if $("textarea").val().length > 0
+      return true
+    else
+      return false
+  )
+
+
   $(".checkbox").click(->
     $.ajax({
       url: "tasks/done/#{$(this).attr('id')}",
