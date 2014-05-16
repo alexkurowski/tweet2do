@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
   def self.add task, user
-    text = task['text'].split '@'
+    text = task.split '@'
     text[0] = text[0..-2].join if text.count > 2
     text[1] = "" if text.count < 2
 
@@ -9,7 +9,7 @@ class Task < ActiveRecord::Base
     date = parse_time text.last, now
     is_reminder = true if date > now
 
-    Task.create(:text => text.first, :user => user, :is_done => false, :is_reminder => is_reminder, :date => date.utc)
+    Task.create(:text => text.first.strip, :user => user, :is_done => false, :is_reminder => is_reminder, :date => date.utc)
   end
 
   def self.update id, text

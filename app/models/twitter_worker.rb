@@ -11,8 +11,8 @@ class TwitterWorker < ActiveRecord::Base
       :access_token_secret => "k3AKilRA19oMtmLF2zrJYrV3OiwVPbb2iSQTRRiNlAbVp"
     }
 
-    @client ||= Twitter::REST::Client.new config
     @check_allowed = true
+    @client ||= Twitter::REST::Client.new config
   end
 
   def self.check_new_followers
@@ -26,6 +26,8 @@ class TwitterWorker < ActiveRecord::Base
       @client.follow followers - friends
     rescue
       puts "Error accessing twitter (most likely rate limit error)"
+
+      :error
     end
   end
 
@@ -46,11 +48,13 @@ class TwitterWorker < ActiveRecord::Base
 
         @client.destroy_direct_message processed if not processed.empty?
       end
+
+      @check_allowed = false
     rescue
       puts "Error accessing twitter (most likely rate limit error)"
-    end
 
-    @check_allowed = false
+      :error
+    end
   end
 
   def self.send_reminders
