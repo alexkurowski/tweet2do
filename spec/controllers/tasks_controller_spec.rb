@@ -36,7 +36,7 @@ describe TasksController do
     it "creates new task" do
       expect {
         post(:add, :task => {'text' => "text of new entry"})
-      }.to change(Task, :count).by(1)
+      }.to change(Task, :count).by 1
     end
   end
 
