@@ -33,5 +33,6 @@ production:
   pool: 5
   username: adminj9bvp9y
   password: gdD2nk-a633g
-  host: localhost
+  host: 127.8.125.2
+  port: 5432
   timeout: 5000
