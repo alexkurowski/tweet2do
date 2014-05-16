@@ -38,11 +38,11 @@ class Task < ActiveRecord::Base
     date_hash = {}
 
     string.split(/[^dwm0-9]/).each do |d|
-      date_hash['month']  = d[0...-1].to_i if d =~ /^[0-9]+[mM]$/
-      date_hash['week']   = d[0...-1].to_i if d =~ /^[0-9]+[wW]$/
-      date_hash['day']    = d[0...-1].to_i if d =~ /^[0-9]+[dD]$/
-      date_hash['hour']   = d.to_i if d =~ /^[0-9]+$/ and not date_hash.has_key? 'hour'
       date_hash['minute'] = d.to_i if d =~ /^[0-9]+$/ and date_hash.has_key? 'hour'
+      date_hash['hour']   = d.to_i if d =~ /^[0-9]+$/ and not date_hash.has_key? 'hour'
+      date_hash['day']    = d[0...-1].to_i if d =~ /^[0-9]+[dD]$/
+      date_hash['week']   = d[0...-1].to_i if d =~ /^[0-9]+[wW]$/
+      date_hash['month']  = d[0...-1].to_i if d =~ /^[0-9]+[mM]$/
     end
 
     date_hash['hour'] ||= now.hour
