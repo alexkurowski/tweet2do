@@ -8,9 +8,8 @@ development:
   encoding: unicode
   database: actrem_dev
   pool: 5
-  password: 914uRjkSS
-  # username: mapi
-  # password: 3J89aa1qMz
+  username: adminj9bvp9y
+  password: gdD2nk-a633g
   host: localhost
   timeout: 5000
 
@@ -22,9 +21,8 @@ test:
   encoding: unicode
   database: actrem_test
   pool: 5
-  password: 914uRjkSS
-  # username: mapi
-  # password: 3J89aa1qMz
+  username: adminj9bvp9y
+  password: gdD2nk-a633g
   host: localhost
   timeout: 5000
 
@@ -33,8 +31,7 @@ production:
   encoding: unicode
   database: actrem
   pool: 5
-  password: 914uRjkSS
-  # username: mapi
-  # password: 3J89aa1qMz
+  username: adminj9bvp9y
+  password: gdD2nk-a633g
   host: localhost
   timeout: 5000
