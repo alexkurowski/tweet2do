@@ -32,6 +32,8 @@ class Task < ActiveRecord::Base
     task
   end
 
+  private
+
   def self.parse_time string, now
     date_hash = {}
 
