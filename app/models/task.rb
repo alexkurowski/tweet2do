@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
     is_reminder = false
     now = Time.now
     date = parse_time text.last, now
-    is_reminder = true if date > now
+    is_reminder = true if not text.last.empty? and date > now
 
     Task.create(:text => text.first.strip, :user => user, :is_done => false, :is_reminder => is_reminder, :date => date.utc)
   end
@@ -22,7 +22,7 @@ class Task < ActiveRecord::Base
     is_reminder = false
     now = Time.now
     date = parse_time text.last, now
-    is_reminder = true if date > now.utc
+    is_reminder = true if not text.last.empty? and date > now
 
     task.text = text.first.strip
     task.date = date.utc
@@ -45,10 +45,10 @@ class Task < ActiveRecord::Base
       date_hash['month']  = d[0...-1].to_i if d =~ /^[0-9]+[mM]$/
     end
 
+    date_hash['minute'] ||= (date_hash.has_key?('hour') ? 0 : now.min)
     date_hash['hour'] ||= now.hour
-    date_hash['minute'] ||= 0
-    date_hash['hour'] = 23 if date_hash['hour'] > 23
     date_hash['minute'] = 59 if date_hash['minute'] > 59
+    date_hash['hour'] = 23 if date_hash['hour'] > 23
 
     date = Time.local now.year, now.month, now.day, date_hash['hour'], date_hash['minute'], now.sec
 
@@ -56,7 +56,7 @@ class Task < ActiveRecord::Base
     date += date_hash['week'].weeks   if date_hash.has_key? 'week'
     date += date_hash['month'].months if date_hash.has_key? 'month'
 
-    date += 1.day if date+60 < now and not date_hash.empty?
+    date += 1.day if date < now and not date_hash.empty?
 
     date
   end

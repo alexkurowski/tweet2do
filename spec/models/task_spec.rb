@@ -40,9 +40,22 @@ describe Task do
 
   it "should parse time" do
     date = Task.parse_time "1d-20.30", Time.now
-
     expect(date.day).to eq((Time.now + 1.day).day)
     expect(date.hour).to eq(20)
     expect(date.min).to eq(30)
+
+    date = Task.parse_time "1w-02", Time.now
+    expect(date.day).to eq((Time.now + 7.days).day)
+    expect(date.hour).to eq(2)
+    expect(date.min).to eq(0)
+
+    date = Task.parse_time "2m-11.10", Time.now
+    expect(date.month).to eq((Time.now + 2.month).month)
+    expect(date.hour).to eq(11)
+    expect(date.min).to eq(10)
+
+    date = Task.parse_time "60.80", Time.now
+    expect(date.hour).to eq(23)
+    expect(date.min).to eq(59)
   end
 end
