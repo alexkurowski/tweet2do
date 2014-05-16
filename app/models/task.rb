@@ -24,15 +24,12 @@ class Task < ActiveRecord::Base
     date = parse_time text.last, now
     is_reminder = true if date > now.utc
 
-    task.text = text.first
+    task.text = text.first.strip
     task.date = date.utc
     task.is_reminder = is_reminder
-    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-    puts "date = #{date}"
-    puts "now = #{now}"
-    puts "date - 60 > now = #{date > now}"
-    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
     task.save!
+
+    task
   end
 
   def self.parse_time string, now
