@@ -30,7 +30,7 @@ class TasksController < ApplicationController
     @task.save!
 
     respond_to do |format|
-      format.html { render :text => "" }
+      format.html { render :text => '' }
     end
   end
 
