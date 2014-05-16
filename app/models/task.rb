@@ -46,7 +46,7 @@ class Task < ActiveRecord::Base
     end
 
     date_hash['hour'] ||= now.hour
-    date_hash['minute'] ||= now.min
+    date_hash['minute'] ||= 0
     date_hash['hour'] = 23 if date_hash['hour'] > 23
     date_hash['minute'] = 59 if date_hash['minute'] > 59
 
