@@ -4,7 +4,7 @@ scheduler = Rufus::Scheduler.new
 
 TwitterWorker.start
 
-if Rails.env.production?
+# if Rails.env.production?
   scheduler.every '5m' do
     TwitterWorker.check_new_tasks true
   end
@@ -20,4 +20,4 @@ if Rails.env.production?
   scheduler.every '1m' do
     TwitterWorker.send_reminders
   end
-end
+# end

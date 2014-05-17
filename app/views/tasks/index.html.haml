@@ -30,11 +30,14 @@
             .date= "#{date}"
         .edit{:id => "#{task.id}", :style => "display: none"}
           - if task.is_reminder
-            - remain_days = (task.date - Time.now.utc)/60/60/24 + 1
+            - remain_days = (task.date - Time.now.utc)/60/60/24
+            - puts Time.now.utc
+            - puts task.date
+            - puts remain_days
             - date = "@#{remain_days >= 1 ? "%d" % remain_days + 'd-' : ''}#{"%02d" % task.date.localtime.hour}.#{"%02d" % task.date.localtime.min}"
           - else
             - date = ''
-          = text_field_tag "edit", "#{task.text}#{date}", maxlength: 140
+          = text_field_tag "edit", "#{task.text} #{date}", maxlength: 140
         .control
           = image_tag("fi-pencil.svg", :class => "edit_image", :id => "#{task.id}")
           = link_to image_tag("fi-x.svg", :class => "delete_image", :id => "#{task.id}"), "tasks/destroy/#{task.id}", :method => 'destroy'

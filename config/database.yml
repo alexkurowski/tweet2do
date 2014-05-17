@@ -23,8 +23,8 @@ production:
   encoding: unicode
   database: actrem
   pool: 5
-  username: adminj9bvp9y
-  password: gdD2nk-a633g
+  username: adming28bbxv
+  password: HSslb3a3tyxY
   host: 127.8.125.2
   port: 5432
   timeout: 5000
