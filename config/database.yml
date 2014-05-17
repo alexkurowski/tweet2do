@@ -23,8 +23,8 @@ production:
   encoding: unicode
   database: actrem
   pool: 5
-  username: adming28bbxv
-  password: HSslb3a3tyxY
-  host: 5377a31f5973ca62cb000026@actrem-mapi.rhcloud.com
-  port: 47486
+  username: adminxscciq5
+  password: s_Yw-NY9B3Vt
+  host: 127.12.20.129
+  port: 41566
   timeout: 5000
