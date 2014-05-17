@@ -21,7 +21,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: actrem
+  database: actualrem
   pool: 5
   username: adminxscciq5
   password: s_Yw-NY9B3Vt
