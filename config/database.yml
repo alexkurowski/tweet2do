@@ -25,6 +25,6 @@ production:
   pool: 5
   username: adming28bbxv
   password: HSslb3a3tyxY
-  host: 127.8.125.2
-  port: 5432
+  host: 5377a31f5973ca62cb000026@actrem-mapi.rhcloud.com
+  port: 47486
   timeout: 5000
