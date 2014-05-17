@@ -5,10 +5,10 @@ class TwitterWorker < ActiveRecord::Base
 
   def self.start
     config = {
-      :consumer_key        => "7GGByLqHYOv7FtxFsWldv8CY7",
-      :consumer_secret     => "6j7knVk57fyjS4RIt8rIUZdPNbmYcGK1cWJte6IkYqQ6VuCP85",
-      :access_token        => "1552533662-otqd46hk75stoHmD9oP5E7ugpIdt6S5RkcOdQ0h",
-      :access_token_secret => "k3AKilRA19oMtmLF2zrJYrV3OiwVPbb2iSQTRRiNlAbVp"
+      :consumer_key        => "6JBqCTxZbOO85nFqKOZUpKTcX",
+      :consumer_secret     => "gAleiufup28QgtJtRC8enbMp8qcgKf176A9WeC30jZ3pAkeIEp",
+      :access_token        => "2499780018-niiMIqFz7wNvJ5JTZhLFlRRuXFPmnbYGzZ7M1CI",
+      :access_token_secret => "ZPvFgq3H6vGHQrLq2ONnyaPOrDCZs8Vc5kZeuglIUjSE6"
     }
 
     @check_allowed = true
@@ -19,9 +19,9 @@ class TwitterWorker < ActiveRecord::Base
     start if @client.nil?
     
     begin
-      followers = @client.follower_ids("zneue").map{|_|_}
+      followers = @client.follower_ids("actrem").map{|_|_}
 
-      friends = @client.friend_ids("zneue").map{|_|_}
+      friends = @client.friend_ids("actrem").map{|_|_}
 
       @client.follow followers - friends
     rescue
