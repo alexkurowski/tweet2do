@@ -51,3 +51,8 @@ gem 'omniauth-twitter'
 gem 'haml'
 gem 'rufus-scheduler'
 gem 'twitter'
+
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rvm', github: "capistrano/rvm"
