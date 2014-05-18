@@ -12,6 +12,8 @@
     = form_for @new_task, :url => { :action => "add" } do |form|
       = form.text_area :text, :maxlength => '140'
       .calendar
+      .timezone{:style => "display: none"}
+        = form.text_field :time_offset
       = form.submit "add", :class => "submit"
       .info= image_tag("fi-info.svg", :class => "info_image", :title => "Example: \"buy some milk @3d-16.30\"\nreminder will be delivered in 3 days at 16:30", :style => "display: none")
       .explain
@@ -26,15 +28,13 @@
           .text= "#{task.text}"
           - if task.is_reminder
             - remain_days = (task.date - Time.now.utc)/60/60/24
-            - date = "#{remain_days >= 1 ? "in %d" % remain_days + (remain_days.floor == 1 ? ' day ' : ' days ') : ''}at #{"%02d" % task.date.localtime.hour}.#{"%02d" % task.date.localtime.min}"
+            - date = "#{remain_days >= 1 ? "in %d" % remain_days + (remain_days.floor == 1 ? ' day ' : ' days ') : ''}at #{(task.date - task.time_offset).strftime('%H.%M')}"
             .date= "#{date}"
+            = task.time_offset
         .edit{:id => "#{task.id}", :style => "display: none"}
           - if task.is_reminder
             - remain_days = (task.date - Time.now.utc)/60/60/24
-            - puts Time.now.utc
-            - puts task.date
-            - puts remain_days
-            - date = "@#{remain_days >= 1 ? "%d" % remain_days + 'd-' : ''}#{"%02d" % task.date.localtime.hour}.#{"%02d" % task.date.localtime.min}"
+            - date = "@#{remain_days >= 1 ? "%d" % remain_days + 'd-' : ''}#{(task.date - task.time_offset).strftime('%H.%M')}"
           - else
             - date = ''
           = text_field_tag "edit", "#{task.text} #{date}", maxlength: 140

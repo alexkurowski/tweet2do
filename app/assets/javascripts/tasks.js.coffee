@@ -58,8 +58,9 @@ jQuery ->
 
 
 $(document).ready ->
+  $(".timezone input")[0].value = new Date().getTimezoneOffset()
   $(".task").each ->
     done = $(this).find(".checkbox").is(':checked')
     if done
-      $(this).find(".content").css({ opacity: 0.6 });
+      $(this).find(".content").css({ opacity: 0.6 })
       $(this).find(".date").hide()

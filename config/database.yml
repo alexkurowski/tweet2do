@@ -23,7 +23,7 @@ production:
   encoding: unicode
   database: actualrem
   pool: 5
-  username: adminxscciq5
+  username: actualrem
   password: s_Yw-NY9B3Vt
   host: 127.12.20.129
   port: 41566

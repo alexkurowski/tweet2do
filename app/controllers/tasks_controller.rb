@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   end
 
   def add
-    Task.add params[:task]['text'], current_user.twitter_alias
+    Task.add params[:task]['text'], current_user.twitter_alias, params[:task]['time_offset']
     redirect_to root_url
   end
 
