@@ -28,13 +28,13 @@
           .text= "#{task.text}"
           - if task.is_reminder
             - remain_days = (task.date - Time.now.utc)/60/60/24
-            - date = "#{remain_days >= 1 ? "in %d" % remain_days + (remain_days.floor == 1 ? ' day ' : ' days ') : ''}at #{(task.date - task.time_offset).strftime('%H.%M')}"
+            - date = "#{remain_days >= 1 ? "in %d" % remain_days.ceil + (remain_days.floor == 1 ? ' day ' : ' days ') : ''}at #{(task.date - task.time_offset).strftime('%H.%M')}"
             .date= "#{date}"
             = task.time_offset
         .edit{:id => "#{task.id}", :style => "display: none"}
           - if task.is_reminder
             - remain_days = (task.date - Time.now.utc)/60/60/24
-            - date = "@#{remain_days >= 1 ? "%d" % remain_days + 'd-' : ''}#{(task.date - task.time_offset).strftime('%H.%M')}"
+            - date = "@#{remain_days >= 1 ? "%d" % remain_days.ceil + 'd-' : ''}#{(task.date - task.time_offset).strftime('%H.%M')}"
           - else
             - date = ''
           = text_field_tag "edit", "#{task.text} #{date}", maxlength: 140
