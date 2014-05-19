@@ -7,6 +7,9 @@ This is a task manager with a twist. You can add new tasks and receive reminders
 Built using Ruby on Rails
 
 
+![screenshot](http://i.imgur.com/qKEEvnt.png)
+
+
 
 Usage
 -----
