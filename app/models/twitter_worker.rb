@@ -75,6 +75,6 @@ class TwitterWorker < ActiveRecord::Base
   private 
 
   def self.process message
-    task = Task.add({'text' => message.text}, message.sender.username)
+    task = Task.add({'text' => message.text}, message.sender.screen_name)
   end
 end
