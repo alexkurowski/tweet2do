@@ -3,7 +3,6 @@ class Task < ActiveRecord::Base
     text = task.split '@'
     text[0] = text[0..-2].join if text.count > 2
     text[1] = "" if text.count < 2
-    time_offset ||= 0
     time_offset = time_offset.to_i * 60
 
     is_reminder = false
