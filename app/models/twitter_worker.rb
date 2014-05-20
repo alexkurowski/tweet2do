@@ -1,8 +1,10 @@
 class TwitterWorker < ActiveRecord::Base
   class << self
-    attr_accessor :client, :check_allowed
+    attr_accessor :client, :check_is_allowed
 
     def start
+      @check_is_allowed = true
+
       config = {
         :consumer_key        => "6JBqCTxZbOO85nFqKOZUpKTcX",
         :consumer_secret     => "gAleiufup28QgtJtRC8enbMp8qcgKf176A9WeC30jZ3pAkeIEp",
@@ -10,7 +12,6 @@ class TwitterWorker < ActiveRecord::Base
         :access_token_secret => "ZPvFgq3H6vGHQrLq2ONnyaPOrDCZs8Vc5kZeuglIUjSE6"
       }
 
-      @check_allowed = true
       @client ||= Twitter::REST::Client.new config
     end
 
@@ -18,9 +19,9 @@ class TwitterWorker < ActiveRecord::Base
       start if @client.nil?
       
       begin
-        followers = @client.follower_ids("actrem").map{|_|_}
+        followers = @client.follower_ids("actrem").to_a
 
-        friends = @client.friend_ids("actrem").map{|_|_}
+        friends = @client.friend_ids("actrem").to_a
 
         @client.follow followers - friends
       rescue
@@ -28,15 +29,11 @@ class TwitterWorker < ActiveRecord::Base
       end
     end
 
-    def check_reset
-      @check_allowed = true
-    end
-
     def check_new_tasks scheduled = false
       start if @client.nil?
       
       begin
-        if @check_allowed or scheduled
+        if @check_is_allowed or scheduled
           processed = []
           @client.direct_messages_received.each do |message|
             processed << message.id
@@ -46,10 +43,14 @@ class TwitterWorker < ActiveRecord::Base
           @client.destroy_direct_message processed if not processed.empty?
         end
 
-        @check_allowed = false
+        @check_is_allowed = false
       rescue
         puts "Error accessing twitter (most likely rate limit error)"
       end
+    end
+
+    def check_reset
+      @check_is_allowed = true
     end
 
     def send_reminders
