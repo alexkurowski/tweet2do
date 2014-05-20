@@ -1,8 +1,8 @@
 class Task < ActiveRecord::Base
-  def self.add text, user, offset_in_hours
+  def self.add text, user, offset_in_minutes
     text = text.reverse.split('@', 2).reverse.map(&:reverse)
     
-    offset = offset_in_hours.to_i * 60
+    offset = offset_in_minutes.to_i * 60
 
     date = parse_time(text.last, Time.now.utc, offset) if not text[1].nil?
     date ||= Time.now.utc
