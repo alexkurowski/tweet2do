@@ -14,7 +14,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.update id, text
-    task = Task.where(id: id).take
+    task = Task.find id
 
     text = text.split '@'
     text[0] = text[0..-2].join if text.count > 2
